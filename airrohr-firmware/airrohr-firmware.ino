@@ -3296,7 +3296,7 @@ static void fetchSensorHTU21D(String &s)
 	}
 	else
 	{
-		last_value_HTU21D_T = t;
+		last_value_HTU21D_T = t + readCorrectionOffset(cfg::temp_correction);
 		last_value_HTU21D_H = h;
 		add_Value2Json(s, F("HTU21D_temperature"), FPSTR(DBG_TXT_TEMPERATURE), last_value_HTU21D_T);
 		add_Value2Json(s, F("HTU21D_humidity"), FPSTR(DBG_TXT_HUMIDITY), last_value_HTU21D_H);
@@ -3323,7 +3323,7 @@ static void fetchSensorBMP(String &s)
 	}
 	else
 	{
-		last_value_BMP_T = t;
+		last_value_BMP_T = t + readCorrectionOffset(cfg::temp_correction);
 		last_value_BMP_P = p;
 		add_Value2Json(s, F("BMP_pressure"), FPSTR(DBG_TXT_PRESSURE), last_value_BMP_P);
 		add_Value2Json(s, F("BMP_temperature"), FPSTR(DBG_TXT_TEMPERATURE), last_value_BMP_T);
@@ -3349,7 +3349,7 @@ static void fetchSensorSHT3x(String &s)
 	}
 	else
 	{
-		last_value_SHT3X_T = t;
+		last_value_SHT3X_T = t + readCorrectionOffset(cfg::temp_correction);
 		last_value_SHT3X_H = h;
 		add_Value2Json(s, F("SHT3X_temperature"), FPSTR(DBG_TXT_TEMPERATURE), last_value_SHT3X_T);
 		add_Value2Json(s, F("SHT3X_humidity"), FPSTR(DBG_TXT_HUMIDITY), last_value_SHT3X_H);
@@ -3378,7 +3378,7 @@ static void fetchSensorSCD30(String &s)
 	}
 	else
 	{
-		last_value_SCD30_T = t;
+		last_value_SCD30_T = t + readCorrectionOffset(cfg::temp_correction);
 		last_value_SCD30_H = h;
 		last_value_SCD30_CO2 = c;
 		add_Value2Json(s, F("SCD30_temperature"), FPSTR(DBG_TXT_TEMPERATURE), last_value_SCD30_T);
